@@ -1,0 +1,20 @@
+ name: Node Js CI
+ on:
+    push:
+        branches: ['donal']
+ jobs:
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [18.x, 19.x, 20.x]
+        steps:
+            - name: Checker le repository
+              uses: actions/checkout@v4
+              
+            - name: Environnement Node Js
+              uses: actions/setup-node@v3
+              with:
+                node-version: ${{matrix.node-version}}
+                cache: 'npm'
+              
